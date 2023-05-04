@@ -2,7 +2,7 @@
     "models": [
         {
             "name": "armadillo",
-            "obj": "./models/armadillo.obj"
+            "obj": "./models/armadillo/armadillo.obj"
         }
     ],
     "lights": [
@@ -10,7 +10,7 @@
             "name": "ambient1",
             "type": "ambient",
             "color": "#FFAABB",
-            "intensity": 1
+            "intensity": 0.1
         },
         {
             "name": "directional1",

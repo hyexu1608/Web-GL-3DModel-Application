@@ -11,9 +11,11 @@ class AppState
         this.ui_categories = {
             'Shading':
             {
-                'Unlit': document.getElementById( 'shadingUnlit' ),
-                'Goraud': document.getElementById( 'shadingGoraud' ),
                 'Phong': document.getElementById( 'shadingPhong' ),
+                'Textured': document.getElementById( 'shadingTextured' ),
+            },
+            'Shading Debug': {
+                'Normals': document.getElementById( 'shadingDebugNormals' ),
             },
             'Control':
             {
@@ -32,7 +34,8 @@ class AppState
         }
 
         // Update UI with default values
-        this.updateUI( 'Shading', 'Unlit' )
+        this.updateUI( 'Shading', 'Phong' )
+        this.updateUI( 'Shading Debug', '' )
         this.updateUI( 'Control', 'Camera' )
         
         // Set asynchronous handlers
@@ -83,12 +86,17 @@ class AppState
     update( )
     {
         // Shading
-        if ( Input.isKeyPressed( 'z' )) {
-            this.updateUI( 'Shading', 'Unlit' )
-        } else if ( Input.isKeyPressed( 'x' ) ) {
-            this.updateUI( 'Shading', 'Goraud' )
-        } else if ( Input.isKeyPressed( 'c' ) ) {
+        if ( Input.isKeyPressed( 'c' ) ) {
             this.updateUI( 'Shading', 'Phong' )
+        } else if ( Input.isKeyPressed( 'v' ) ) {
+            this.updateUI( 'Shading', 'Textured' )
+        }
+
+        // Shading Debug
+        if ( Input.isKeyDown( 'n' ) ) {
+            this.updateUI( 'Shading Debug', 'Normals' )
+        } else {
+            this.updateUI( 'Shading Debug', '' )
         }
 
         // Transformation

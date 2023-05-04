@@ -105,6 +105,21 @@ function getRelativeMousePosition( event )
     )
 }
 
+
+/**
+ * Extracts the directory path from a file path
+ * 
+ * @param {String} path The path to a file
+ */
+function getFileDir(path) {
+    let components = path.split('/')
+    components.pop()
+
+    let result = components.join('/')
+
+    return result
+}
+
 export
 {
     
@@ -113,6 +128,7 @@ export
     hex2rgb,
     deg2rad,
     getRelativeMousePosition,
-    json2transform
+    json2transform,
+    getFileDir
 
 }

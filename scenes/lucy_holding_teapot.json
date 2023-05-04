@@ -2,15 +2,15 @@
     "models": [
         {
             "name": "teapot",
-            "obj": "./models/teapot.obj"
+            "obj": "./models/teapot/teapot.obj"
         },
         {
             "name": "lucy",
-            "obj": "./models/lucy.obj"
+            "obj": "./models/lucy/lucy.obj"
         },
         {
             "name": "platform",
-            "obj": "./models/platform.obj"
+            "obj": "./models/platform/platform.obj"
         }
     ],
     "lights": [
@@ -18,7 +18,7 @@
             "name": "ambient1",
             "type": "ambient",
             "color": "#FFAABB",
-            "intensity": 0.75
+            "intensity": 0.1
         },
         {
             "name": "directional1",
@@ -66,7 +66,7 @@
                         "type": "light",
                         "content": "point1",
                         "transformation": {
-                            "translation": [1, 1, 1]
+                            "translation": [0.80, -0.90, 0.90]
                         }
                     },
                     {
@@ -74,7 +74,7 @@
                         "type": "light",
                         "content": "point2",
                         "transformation": {
-                            "translation": [1, -0.25, -1]
+                            "translation": [1, 0.25, -1]
                         }
                     }
                 ]

@@ -2,7 +2,7 @@
     "models": [
         {
             "name": "teapot",
-            "obj": "./models/teapot.obj"
+            "obj": "./models/teapot/teapot.obj"
         }
     ],
     "lights": [
@@ -10,7 +10,7 @@
             "name": "ambient1",
             "type": "ambient",
             "color": "#FFAABB",
-            "intensity": 1
+            "intensity": 0.1
         },
         {
             "name": "directional1",

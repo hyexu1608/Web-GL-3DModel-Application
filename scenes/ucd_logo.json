@@ -2,7 +2,7 @@
     "models": [
         {
             "name": "ucd_logo",
-            "obj": "./models/ucd_logo.obj"
+            "obj": "./models/ucd_logo/ucd_logo.obj"
         }
     ],
     "lights": [
@@ -10,7 +10,7 @@
             "name": "ambient1",
             "type": "ambient",
             "color": "#FFAABB",
-            "intensity": 1
+            "intensity": 0.1
         },
         {
             "name": "directional1",
@@ -49,8 +49,8 @@
                         "type": "light",
                         "content": "directional1",
                         "transformation": {
-                            "translation": [-1.5, 0.5, 1.5],
-                            "rotation": [45,25,90]
+                            "translation": [1.5, 0.5, -1.5],
+                            "rotation": [-45,25,-90]
                         }
                     },
                     {
@@ -58,7 +58,7 @@
                         "type": "light",
                         "content": "point1",
                         "transformation": {
-                            "translation": [1, 1, -1]
+                            "translation": [-1, 1, 1]
                         }
                     }
                 ]

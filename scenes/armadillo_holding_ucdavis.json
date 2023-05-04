@@ -2,15 +2,15 @@
     "models": [
         {
             "name": "armadillo",
-            "obj": "./models/armadillo.obj"
+            "obj": "./models/armadillo/armadillo.obj"
         },
         {
             "name": "ucdavis",
-            "obj": "./models/ucd_logo.obj"
+            "obj": "./models/ucd_logo/ucd_logo.obj"
         },
         {
             "name": "platform",
-            "obj": "./models/platform.obj"
+            "obj": "./models/platform/platform.obj"
         }
     ],
     "lights": [
@@ -18,7 +18,7 @@
             "name": "ambient1",
             "type": "ambient",
             "color": "#FFAABB",
-            "intensity": 0.75
+            "intensity": 0.1
         },
         {
             "name": "directional1",
@@ -30,13 +30,13 @@
             "name": "point1",
             "type": "point",
             "color": "#F5A340",
-            "intensity": 5.0
+            "intensity": 4.0
         },
         {
             "name": "point2",
             "type": "point",
-            "color": "#4287c8",
-            "intensity": 2.0
+            "color": "#cfd7e6",
+            "intensity": 1.0
         }
     ],
     "scenegraph": {
@@ -84,7 +84,7 @@
                         "type": "light",
                         "content": "point1",
                         "transformation": {
-                            "translation": [1, 1, -1]
+                            "translation": [0.25, 1.5, -1.5]
                         }
                     },
                     {
@@ -92,7 +92,7 @@
                         "type": "light",
                         "content": "point2",
                         "transformation": {
-                            "translation": [1, -0.25, -1]
+                            "translation": [0.75, -0.75, -1.5]
                         }
                     }
                 ]

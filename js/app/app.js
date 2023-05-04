@@ -21,9 +21,9 @@ class App
         // shaders
         console.log( 'Loading Shaders' )
         this.shaders = [
-            new Shader( this.gl, '../../shaders/unlit.vertex.glsl', '../../shaders/unlit.fragment.glsl' ),
-            new Shader( this.gl, '../../assignment5.goraud.vert.glsl', '../../assignment5.goraud.frag.glsl' ),
-            new Shader( this.gl, '../../assignment5.phong.vert.glsl', '../../assignment5.phong.frag.glsl' ),
+            new Shader( this.gl, '../../shaders/unlit.vert.glsl', '../../shaders/unlit.frag.glsl' ),
+            new Shader( this.gl, '../../shaders/phong.vert.glsl', '../../shaders/phong.frag.glsl' ),
+            new Shader( this.gl, '../../assignment6.textured.vert.glsl', '../../assignment6.textured.frag.glsl' ),
             new Shader( this.gl, '../../shaders/lights.vert.glsl', '../../shaders/lights.frag.glsl' )
         ]
 

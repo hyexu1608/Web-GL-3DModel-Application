@@ -1,12 +1,12 @@
 'use strict'
 
-import { ShadedObject3D } from "../../assignment5.object3d.js"
+import { ShadedObject3D } from "../../assignment6.object3d.js"
 import { SHADER_MAX_LIGHTS, hex2rgb, json2transform } from "../utils/utils.js"
 import * as mat4 from "../lib/glmatrix/mat4.js"
 import * as quat4 from "../lib/glmatrix/quat.js"
 
-import { OBJLoader } from "../../assignment5.objloader.js"
-import { Light, AmbientLight, DirectionalLight, PointLight } from "../../assignment5.light.js"
+import { OBJLoader } from "../../assignment6.objloader.js"
+import { Light, AmbientLight, DirectionalLight, PointLight } from "./light.js"
 
 
 /**
@@ -35,7 +35,7 @@ class Scene {
         this.scene_config = scene_config
 
         // First load the OBJ models
-        this.models = 'models' in scene_config ? this.loadModels(scene_config.models) : {}
+        this.models = 'models' in scene_config ? this.loadModels(scene_config.models, gl) : {}
 
         // Then load all the lights and reset the lights in the shader
         this.lights = 'lights' in scene_config ? this.loadLights(scene_config.lights) : {}
@@ -80,13 +80,13 @@ class Scene {
      * @param {Object} models_config JSON object containing the list of models from the scene config
      * @returns {Map<String,[Array<Number>, Array<Number>]>} A dictionary containing the model data for each loaded OBJ file. Model data consists of a tuple of vertex and index values. Refer to OBJLoader for details.
      */
-    loadModels( models_config ) {
+    loadModels( models_config, gl ) {
         let models = {}
 
         for (let model_config of models_config) {
             // Load the OBJ file
             let loader = new OBJLoader(model_config.obj)
-            models[model_config.name] = loader.load()
+            models[model_config.name] = loader.load(gl)
         }
 
         return models
@@ -125,7 +125,7 @@ class Scene {
         let [ vertices, indices, material ] = this.models[name]
 
         // Instantiate a new Object3D using the geometry and a default draw_mode of gl.TRIANGLES
-        return new ShadedObject3D( material, gl, shader, vertices, indices, gl.TRIANGLES )
+        return new ShadedObject3D( gl, shader, vertices, indices, gl.TRIANGLES, material )
     }
 
     /**

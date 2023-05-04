@@ -2,7 +2,7 @@
     "models": [
         {
             "name": "cow",
-            "obj": "./models/cow.obj"
+            "obj": "./models/cow/cow.obj"
         }
     ],
     "lights": [
@@ -10,7 +10,7 @@
             "name": "ambient1",
             "type": "ambient",
             "color": "#FFAABB",
-            "intensity": 0.75
+            "intensity": 0.1
         },
         {
             "name": "directional1",

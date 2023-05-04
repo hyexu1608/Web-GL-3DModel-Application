@@ -2,7 +2,7 @@
     "models": [
         {
             "name": "stanford-bunny",
-            "obj": "./models/stanford-bunny.obj"
+            "obj": "./models/stanford-bunny/stanford-bunny.obj"
         }
     ],
     "lights": [
@@ -10,7 +10,7 @@
             "name": "ambient1",
             "type": "ambient",
             "color": "#FFAABB",
-            "intensity": 1
+            "intensity": 0.1
         },
         {
             "name": "directional1",
@@ -21,7 +21,7 @@
         {
             "name": "point1",
             "type": "point",
-            "color": "#F5A340",
+            "color": "#f56d40",
             "intensity": 5.0
         }
     ],
@@ -58,7 +58,7 @@
                         "type": "light",
                         "content": "point1",
                         "transformation": {
-                            "translation": [1, 1, -1]
+                            "translation": [-2, 1, -0.75]
                         }
                     }
                 ]

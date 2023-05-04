@@ -7,7 +7,7 @@ import * as mat4 from '../lib/glmatrix/mat4.js'
 import * as vec3 from '../lib/glmatrix/vec3.js'
 import * as quat from '../lib/glmatrix/quat.js'
 
-import { OBJLoader } from '../../assignment5.objloader.js'
+import { OBJLoader } from '../../assignment6.objloader.js'
 import { Scene, SceneNode } from './scene.js'
 
 /**
@@ -34,7 +34,7 @@ class WebGlApp
         this.shaders = shaders // Collection of all shaders
         this.box_shader = this.shaders[0]
         this.light_shader = this.shaders[this.shaders.length - 1]
-        this.active_shader = 0
+        this.active_shader = 1
         
         // Create a box instance and create a variable to track its rotation
         this.box = new Box( gl, this.box_shader )
@@ -133,13 +133,10 @@ class WebGlApp
         if (this.scene != null) {
             let old_active_shader = this.active_shader
             switch(app_state.getState('Shading')) {
-                case 'Unlit':
-                    this.active_shader = 0
-                    break
-                case 'Goraud':
+                case 'Phong':
                     this.active_shader = 1
                     break
-                case 'Phong':
+                case 'Textured':
                     this.active_shader = 2
                     break
             }
@@ -152,6 +149,20 @@ class WebGlApp
                         node.setTargetShader(this.shaders[this.active_shader])
                 }
             }
+        }
+
+        // Shader Debug
+        switch(app_state.getState('Shading Debug')) {
+            case 'Normals':
+                this.shaders[this.active_shader].use()
+                this.shaders[this.active_shader].setUniform1i('u_show_normals', 1)
+                this.shaders[this.active_shader].unuse()
+                break
+            default:
+                this.shaders[this.active_shader].use()
+                this.shaders[this.active_shader].setUniform1i('u_show_normals', 0)
+                this.shaders[this.active_shader].unuse()
+                break
         }
 
         // Control

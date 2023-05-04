@@ -2,7 +2,7 @@
     "models": [
         {
             "name": "suzanne",
-            "obj": "./models/suzanne.obj"
+            "obj": "./models/suzanne/suzanne.obj"
         }
     ],
     "lights": [
@@ -10,19 +10,25 @@
             "name": "ambient1",
             "type": "ambient",
             "color": "#FFAABB",
-            "intensity": 1
+            "intensity": 0.1
         },
         {
             "name": "directional1",
             "type": "directional",
             "color": "#FFFFCC",
-            "intensity": 1.0
+            "intensity": 2.0
         },
         {
             "name": "point1",
             "type": "point",
             "color": "#F5A340",
-            "intensity": 5.0
+            "intensity": 10.0
+        },
+        {
+            "name": "point2",
+            "type": "point",
+            "color": "#4287c8",
+            "intensity": 2.0
         }
     ],
     "scenegraph": {
@@ -58,7 +64,15 @@
                         "type": "light",
                         "content": "point1",
                         "transformation": {
-                            "translation": [1, 1, -1]
+                            "translation": [1.5, 1.5, 1.5]
+                        }
+                    },
+                    {
+                        "name": "pointlight2",
+                        "type": "light",
+                        "content": "point2",
+                        "transformation": {
+                            "translation": [1.5, 0.75, -1]
                         }
                     }
                 ]
