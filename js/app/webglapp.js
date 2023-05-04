@@ -7,7 +7,7 @@ import * as mat4 from '../lib/glmatrix/mat4.js'
 import * as vec3 from '../lib/glmatrix/vec3.js'
 import * as quat from '../lib/glmatrix/quat.js'
 
-import { OBJLoader } from '../../assignment6.objloader.js'
+import { OBJLoader } from '../../objloader.js'
 import { Scene, SceneNode } from './scene.js'
 
 /**
@@ -82,8 +82,7 @@ class WebGlApp
 
     /**
      * Sets up GL flags
-     * In this assignment we are drawing 3D data, so we need to enable the flag 
-     * for depth testing. This will prevent from geometry that is occluded by other 
+     * enable the flag for depth testing. This will prevent from geometry that is occluded by other 
      * geometry from 'shining through' (i.e. being wrongly drawn on top of closer geomentry)
      * 
      * Look into gl.enable() and gl.DEPTH_TEST to learn about this topic

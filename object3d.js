@@ -20,7 +20,7 @@ class Object3D
      * @param {Shader} shader The shader to be used to draw the object
      * @param {Array<Float>} vertices List of vertex positions
      * @param {Array<Int>} indices List of vertex indices
-     * @param {WebGL2RenderingContext.GL_TRIANGLES | WebGL2RenderingContext.GL_POINTS} draw_mode The draw mode to use. In this assignment we use GL_TRIANGLES and GL_POINTS
+     * @param {WebGL2RenderingContext.GL_TRIANGLES | WebGL2RenderingContext.GL_POINTS} draw_mode The draw mode to use (GL_TRIANGLES and GL_POINTS)
      * @param {Material | null} material The material to render the object with
      */
     constructor( gl, shader, vertices, indices, draw_mode, material = null )
@@ -62,7 +62,7 @@ class Object3D
     /**
      * Change the object's draw mode
      * 
-     * @param {WebGL2RenderingContext.GL_TRIANGLES | WebGL2RenderingContext.GL_POINTS} draw_mode The draw mode to use. In this assignment we use GL_TRIANGLES and GL_POINTS
+     * @param {WebGL2RenderingContext.GL_TRIANGLES | WebGL2RenderingContext.GL_POINTS} draw_mode The draw mode to use  (GL_TRIANGLES and GL_POINTS)
      */
     setDrawMode( draw_mode ) {
         this.draw_mode = draw_mode
@@ -186,7 +186,7 @@ class ShadedObject3D extends Object3D {
      * @param {Shader} shader The shader to be used to draw the object
      * @param {Array<Float>} vertices List of vertex positions
      * @param {Array<Int>} indices List of vertex indices
-     * @param {WebGL2RenderingContext.GL_TRIANGLES | WebGL2RenderingContext.GL_POINTS} draw_mode The draw mode to use. In this assignment we use GL_TRIANGLES and GL_POINTS
+     * @param {WebGL2RenderingContext.GL_TRIANGLES | WebGL2RenderingContext.GL_POINTS} draw_mode The draw mode to use (GL_TRIANGLES and GL_POINTS)
      * @param {Material} material The material to render the object with
      */
      constructor( gl, shader, vertices, indices, draw_mode, material ) {
