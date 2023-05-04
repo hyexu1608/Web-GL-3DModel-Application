@@ -260,20 +260,20 @@ class ShadedObject3D extends Object3D {
 
         this.shader.use( )
 
-        // TODO: Pass basic material properties (kA, kD, kS, shininess)
+        // Pass basic material properties (kA, kD, kS, shininess)
         
         this.shader.setUniform3f('u_material.kA', this.material.kA)
         this.shader.setUniform3f('u_material.kD', this.material.kD)
         this.shader.setUniform3f('u_material.kS', this.material.kS)
         this.shader.setUniform1f('u_material.shininess', this.material.shininess)
 
-        // TODO: Associate the sampler uniforms (map_kD, map_nS, map_norm) in the shader's u_material with different texture units
+        // Associate the sampler uniforms (map_kD, map_nS, map_norm) in the shader's u_material with different texture units
 
         let texture_kD = this.material.getMapKD();
         let texture_nS = this.material.getMapNS();
         let texture_norm = this.material.getMapNorm();
 
-        // TODO: Activate and bind texture units if textures are present in the material
+        // Activate and bind texture units if textures are present in the material
         if (this.material.hasMapKD()) {
             gl.activeTexture(gl.TEXTURE0);
             gl.bindTexture(gl.TEXTURE_2D, texture_kD);

@@ -99,15 +99,15 @@ class OBJLoader {
         [vertex_positions, vertex_normals, vertex_texture_coords, position_indices] = this.resolveIndexGroups(vertex_positions, vertex_normals, vertex_texture_coords, position_indices, normal_indices, texture_coord_indices)
 
 
-        // TODO: Merge vertex positions and normals into a single vertex list
-        // TODO: If the loaded material has texture(s), pass tangents and texture coordinates too
+        // Merge vertex positions and normals into a single vertex list
+        // If the loaded material has texture(s), pass tangents and texture coordinates too
         let vertex_data = []
         if (material.hasTexture()) {
             // If there is a texture, we made sure to have texture coordinates
             // We calculate the per-vertex tangents in all cases even if there is no normal map
             // This makes VAO creation easier and more uniform
             vertex_tangents = this.calculateTangents(vertex_positions, vertex_texture_coords, position_indices)
-            // TODO: Pass tangents and texture coordinates
+            // Pass tangents and texture coordinates
             let gap = 0
             for (let i = 0; i < vertex_positions.length; i+=3) {
                 vertex_data.push(vertex_positions[i], vertex_positions[i+1], vertex_positions[i+2])

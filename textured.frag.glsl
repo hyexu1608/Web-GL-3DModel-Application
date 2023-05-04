@@ -50,7 +50,7 @@ uniform vec3 u_eye;
 out vec4 o_fragColor;
 
 // received from vertex stage
-// TODO: Create variables to receive from the vertex stage
+// Create variables to receive from the vertex stage
 
 in vec3 o_vertex_position_world;
 in mat3 TBN;
@@ -62,11 +62,11 @@ in vec2 vTextureCoords;
 // Shades an ambient light and returns this light's contribution
 vec3 shadeAmbientLight(Material material, AmbientLight light) {
 
-    // TODO: Implement this
-    // TODO: Include the material's map_kD to scale kA and to provide texture even in unlit areas
+    // Implement this
+    // Include the material's map_kD to scale kA and to provide texture even in unlit areas
     // NOTE: We could use a separate map_kA for this, but most of the time we just want the same texture in unlit areas
-    // HINT: Refer to http://paulbourke.net/dataformats/mtl/ for details
-    // HINT: Parts of ./shaders/phong.frag.glsl can be re-used here
+    // Refer to http://paulbourke.net/dataformats/mtl/ for details
+    // Parts of ./shaders/phong.frag.glsl can be re-used here
     if (light.intensity == 0.0)
         return vec3(0);
 
@@ -76,11 +76,10 @@ vec3 shadeAmbientLight(Material material, AmbientLight light) {
 // Shades a directional light and returns its contribution
 vec3 shadeDirectionalLight(Material material, DirectionalLight light, vec3 normal, vec3 eye, vec3 vertex_position) {
     
-    // TODO: Implement this
-    // TODO: Use the material's map_kD and map_nS to scale kD and shininess
-    // HINT: The darker pixels in the roughness map (map_nS) are the less shiny it should be
-    // HINT: Refer to http://paulbourke.net/dataformats/mtl/ for details
-    // HINT: Parts of ./shaders/phong.frag.glsl can be re-used here
+    // Use the material's map_kD and map_nS to scale kD and shininess
+    // The darker pixels in the roughness map (map_nS) are the less shiny it should be
+    // Refer to http://paulbourke.net/dataformats/mtl/ for details
+    // Parts of ./shaders/phong.frag.glsl can be re-used here
 
     vec3 result = vec3(0);
     if (light.intensity == 0.0)
@@ -106,11 +105,10 @@ vec3 shadeDirectionalLight(Material material, DirectionalLight light, vec3 norma
 // Shades a point light and returns its contribution
 vec3 shadePointLight(Material material, PointLight light, vec3 normal, vec3 eye, vec3 vertex_position) {
 
-    // TODO: Implement this
-    // TODO: Use the material's map_kD and map_nS to scale kD and shininess
-    // HINT: The darker pixels in the roughness map (map_nS) are the less shiny it should be
-    // HINT: Refer to http://paulbourke.net/dataformats/mtl/ for details
-    // HINT: Parts of ./shaders/phong.frag.glsl can be re-used here
+    // Use the material's map_kD and map_nS to scale kD and shininess
+    // The darker pixels in the roughness map (map_nS) are the less shiny it should be
+    // Refer to http://paulbourke.net/dataformats/mtl/ for details
+    // Parts of ./shaders/phong.frag.glsl can be re-used here
 
     vec3 result = vec3(0);
     if (light.intensity == 0.0)
@@ -137,7 +135,7 @@ vec3 shadePointLight(Material material, PointLight light, vec3 normal, vec3 eye,
 
 void main() {
 
-    // TODO: Calculate the normal from the normal map and tbn matrix to get the world normal
+    // Calculate the normal from the normal map and tbn matrix to get the world normal
     vec3 normal = vec3(0,0,0);
     normal = texture(u_material.map_norm, vTextureCoords).rgb;
     normal = normal * 2.0 - 1.0;  
@@ -155,7 +153,6 @@ void main() {
 
     // iterate over all possible lights and add their contribution
     for(int i = 0; i < MAX_LIGHTS; i++) {
-        // TODO: Call your shading functions here like you did in A5
         light_contribution += shadeAmbientLight(u_material, u_lights_ambient[i]);
         light_contribution += shadeDirectionalLight(u_material, u_lights_directional[i], normal, u_eye, o_vertex_position_world);
         light_contribution += shadePointLight(u_material, u_lights_point[i], normal, u_eye, o_vertex_position_world);

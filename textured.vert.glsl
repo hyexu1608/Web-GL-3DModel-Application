@@ -12,7 +12,7 @@ uniform mat4x4 u_v;
 uniform mat4x4 u_p;
 
 // output to fragment stage
-// TODO: Create varyings to pass data to the fragment stage (position, texture coords, and more)
+// Create varyings to pass data to the fragment stage (position, texture coords, and more)
 
 out vec3 o_vertex_position_world;
 out mat3 TBN;
@@ -26,10 +26,10 @@ void main() {
     // object space -{model}-> world space -{view}-> view space -{projection}-> clip space
     vec4 vertex_position_world = u_m * vec4(a_position, 1.0);
 
-    // TODO: Construct TBN matrix from normals, tangents and bitangents
-    // TODO: Use the Gram-Schmidt process to re-orthogonalize tangents
-    // NOTE: Different from the book, try to do all calculations in world space using the TBN to transform normals
-    // HINT: Refer to https://learnopengl.com/Advanced-Lighting/Normal-Mapping for all above
+    // Construct TBN matrix from normals, tangents and bitangents
+    // Use the Gram-Schmidt process to re-orthogonalize tangents
+    // do all calculations in world space using the TBN to transform normals
+    // Refer to https://learnopengl.com/Advanced-Lighting/Normal-Mapping for all above
 
     mat3 norm_matrix = transpose(inverse(mat3(u_m)));
 
@@ -41,7 +41,7 @@ void main() {
     vec3 B = cross(N, T);
     TBN = mat3(T, B, N);
 
-    // TODO: Forward data to fragment stage
+    // Forward data to fragment stage
 
     gl_Position = u_p * u_v * vertex_position_world;
     vTextureCoords = a_texture_coord;
