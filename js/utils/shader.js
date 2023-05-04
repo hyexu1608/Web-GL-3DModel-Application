@@ -1,4 +1,6 @@
-import { loadExternalFile } from "./utils.js"
+'use strict'
+
+import { loadExternalFile } from './utils.js'
 
 class Shader
 {

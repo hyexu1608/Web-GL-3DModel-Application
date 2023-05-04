@@ -1,7 +1,14 @@
 'use strict'
 
 import * as mat4 from '../lib/glmatrix/mat4.js'
+import * as vec3 from '../lib/glmatrix/vec3.js'
 import * as quat4 from '../lib/glmatrix/quat.js'
+
+/**
+ * Maximum number of lights per light type supported by our shaders
+ */
+const SHADER_MAX_LIGHTS = 16
+
 
 /**
  * Loads a given URL; this is used to load the shaders from file
@@ -12,7 +19,7 @@ function loadExternalFile( url )
 {
 
     let req = new XMLHttpRequest( );
-    req.open( "GET", url, false );
+    req.open( 'GET', url, false );
     req.send( null );
 
     return ( req.status == 200 ) ? req.responseText : null;
@@ -82,22 +89,26 @@ function getRelativeMousePosition( event )
  * Converts a set of transformation configs as found in ./scenes/*.json to a mat4
  * @param {JSON} transform_config a json object (hierarchical mix of dictionaries and lists)
  */
-function json2transform( transform_config ) {
+ function json2transform( transform_config ) {
 
-    if (transform_config.rotation.length == 3)
-        transform_config.rotation = quat4.fromEuler( quat4.create(), transform_config.rotation[0], transform_config.rotation[1], transform_config.rotation[2] )
+    let rotation = 'rotation' in transform_config ? transform_config.rotation : quat4.create()
+    let translation = 'translation' in transform_config ? transform_config.translation : vec3.create()
+    let scale = 'scale' in transform_config ? transform_config.scale : [1,1,1]
+
+    if (rotation.length == 3)
+        rotation = quat4.fromEuler( quat4.create(), rotation[0], rotation[1], rotation[2] )
 
     return mat4.fromRotationTranslationScale(mat4.create(), 
-        transform_config.rotation,
-        transform_config.translation,
-        transform_config.scale
+        rotation,
+        translation,
+        scale
     )
 }
 
-
 export
 {
-
+    
+    SHADER_MAX_LIGHTS,
     loadExternalFile,
     hex2rgb,
     deg2rad,

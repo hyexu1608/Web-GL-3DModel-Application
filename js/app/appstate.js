@@ -1,6 +1,6 @@
 'use strict'
 
-import Input from "../input/input.js"
+import Input from '../input/input.js'
 
 class AppState
 {
@@ -9,51 +9,52 @@ class AppState
     {
         // get list of UI indicators
         this.ui_categories = {
-            "Draw Mode":
+            'Shading':
             {
-                "Points": document.getElementById( "drawmodePoints" ),
-                "Triangles": document.getElementById( "drawmodeTriangles" )
+                'Unlit': document.getElementById( 'shadingUnlit' ),
+                'Goraud': document.getElementById( 'shadingGoraud' ),
+                'Phong': document.getElementById( 'shadingPhong' ),
             },
-            "Control":
+            'Control':
             {
-                "Camera": document.getElementById( "controlCamera" ),
-                "Scene Node": document.getElementById( "controlSceneNode" )
+                'Camera': document.getElementById( 'controlCamera' ),
+                'Scene Node': document.getElementById( 'controlSceneNode' )
             },
-            "Select Scene Node": document.getElementById( "selectSceneNodeSelect" ),
-            "3D Scene": document.getElementById( "openfileActionInput" )
+            'Select Scene Node': document.getElementById( 'selectSceneNodeSelect' ),
+            '3D Scene': document.getElementById( 'openfileActionInput' )
         }
 
         // create state dictionary
         this.ui_state = {
-            "Draw Mode": "",
-            "Control": "",
-            "Select Scene Node": "",
+            'Shading': '',
+            'Control': '',
+            'Select Scene Node': ''
         }
 
         // Update UI with default values
-        this.updateUI( "Draw Mode", "Triangles" )
-        this.updateUI( "Control", "Camera" )
-
+        this.updateUI( 'Shading', 'Unlit' )
+        this.updateUI( 'Control', 'Camera' )
+        
         // Set asynchronous handlers
-        this.ui_categories["Select Scene Node"].onchange = () => {
-            this.ui_state["Select Scene Node"] = this.ui_categories["Select Scene Node"].value
+        this.ui_categories['Select Scene Node'].onchange = () => {
+            this.ui_state['Select Scene Node'] = this.ui_categories['Select Scene Node'].value
         }
         this.onOpen3DSceneCallback = null
-        this.ui_categories["3D Scene"].onchange = (evt) => {
+        this.ui_categories['3D Scene'].onchange = (evt) => {
             if (this.onOpen3DSceneCallback == null)
                 return
             
             let scene = this.onOpen3DSceneCallback(evt.target.files[0].name)
-            this.ui_categories["Select Scene Node"].innerHTML = ''
+            this.ui_categories['Select Scene Node'].innerHTML = ''
             for (let node of scene.getNodes()) {
                 let option = document.createElement('option')
                 option.value = node.name
                 option.innerHTML = node.name
-                this.ui_categories["Select Scene Node"].appendChild(option)
+                this.ui_categories['Select Scene Node'].appendChild(option)
             }
-            this.ui_categories["Select Scene Node"].removeAttribute("disabled")
-            this.ui_categories["Select Scene Node"].value = this.ui_categories["Select Scene Node"].getElementsByTagName("option")[0].value
-            this.ui_state["Select Scene Node"] = this.ui_categories["Select Scene Node"].value
+            this.ui_categories['Select Scene Node'].removeAttribute('disabled')
+            this.ui_categories['Select Scene Node'].value = this.ui_categories['Select Scene Node'].getElementsByTagName('option')[0].value
+            this.ui_state['Select Scene Node'] = this.ui_categories['Select Scene Node'].value
         }
     }
 
@@ -81,18 +82,20 @@ class AppState
      */
     update( )
     {
-        // Draw Mode
-        if ( Input.isKeyPressed( "a" ) ) {
-            this.updateUI( "Draw Mode", "Points" )
-        } else if ( Input.isKeyPressed( "s" ) ) {
-            this.updateUI( "Draw Mode", "Triangles" )
+        // Shading
+        if ( Input.isKeyPressed( 'z' )) {
+            this.updateUI( 'Shading', 'Unlit' )
+        } else if ( Input.isKeyPressed( 'x' ) ) {
+            this.updateUI( 'Shading', 'Goraud' )
+        } else if ( Input.isKeyPressed( 'c' ) ) {
+            this.updateUI( 'Shading', 'Phong' )
         }
 
         // Transformation
-        if ( Input.isKeyDown( "q" ) ) {
-            this.updateUI( "Control", "Scene Node")
+        if ( Input.isKeyDown( 'q' ) ) {
+            this.updateUI( 'Control', 'Scene Node')
         } else {
-            this.updateUI( "Control", "Camera")
+            this.updateUI( 'Control', 'Camera')
         }
 
     }
@@ -124,8 +127,8 @@ class AppState
     updateUIElement( el, state, value )
     {
 
-        el.classList.remove( state ? "inactive" : "active" )
-        el.classList.add( state ? "active" : "inactive" )
+        el.classList.remove( state ? 'inactive' : 'active' )
+        el.classList.add( state ? 'active' : 'inactive' )
 
         if ( state && value != null )
             el.innerHTML = value

@@ -1,10 +1,9 @@
 'use strict'
 
-import Input from "../input/input.js"
-import AppState from "./appstate.js"
-import Shader from "../utils/shader.js"
-
-import { WebGlApp } from "../../assignment4.webglapp.js"
+import Input from '../input/input.js'
+import AppState from './appstate.js'
+import Shader from '../utils/shader.js'
+import WebGlApp from './webglapp.js'
 
 class App
 {
@@ -12,16 +11,21 @@ class App
     constructor( )
     {
 
-        console.log( "Initializing App" )
+        console.log( 'Initializing App' )
 
         // canvas & gl
-        this.canvas = document.getElementById( "canvas" )
-        this.canvas.addEventListener( "contextmenu", event => event.preventDefault( ) );
+        this.canvas = document.getElementById( 'canvas' )
+        this.canvas.addEventListener( 'contextmenu', event => event.preventDefault( ) );
         this.gl = this.initGl( )
 
         // shaders
-        console.log( "Loading Shaders" )
-        this.shader = new Shader( this.gl, "../../shaders/vertex.glsl", "../../shaders/fragment.glsl" )
+        console.log( 'Loading Shaders' )
+        this.shaders = [
+            new Shader( this.gl, '../../shaders/unlit.vertex.glsl', '../../shaders/unlit.fragment.glsl' ),
+            new Shader( this.gl, '../../assignment5.goraud.vert.glsl', '../../assignment5.goraud.frag.glsl' ),
+            new Shader( this.gl, '../../assignment5.phong.vert.glsl', '../../assignment5.phong.frag.glsl' ),
+            new Shader( this.gl, '../../shaders/lights.vert.glsl', '../../shaders/lights.frag.glsl' )
+        ]
 
         // resize handling
         this.resizeToDisplay( )
@@ -37,7 +41,7 @@ class App
         this.app_state = new AppState( )
 
         // webgl app implementation
-        this.impl = new WebGlApp( this.gl, this.shader, this.app_state )
+        this.impl = new WebGlApp( this.gl, this.shaders, this.app_state )
 
     }
 
@@ -108,5 +112,6 @@ class App
     }
 
 }
+
 
 export default App
