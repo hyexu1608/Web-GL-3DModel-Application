@@ -1,6 +1,7 @@
 This project implements a WebGL application that can load, render, and manipulate 3D scenes with lighting, shading, materials and textures. The 3D models are stored in OBJ format. The 3D scene, represented in JSON format, consists of 3d models and a scenegraph in which those objects are arranged.
 * Arcball camera interaction using the mouse. Pan and Rotate relative to the current camera view. Zooming move the view towards the view's center.
-*	Local transformations of scene nodes using the mouse. Translations and Rotations relative to the current camera view. Scaling local to the object.
+*	Local transformations of scene nodes using the mouse. Translations and Rotations relative to the current camera view. Scaling local to the object.\
+![](https://github.com/hyexu1608/Web-GL-3DModel-Application/blob/main/ex.gif)
 
 ## OBJ and Scene Files
 ### Models
