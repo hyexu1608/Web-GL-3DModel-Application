@@ -5,9 +5,9 @@ This project implements a WebGL application that can load, render, and manipulat
 ## OBJ and Scene Files
 ### Models
 Folder "./models" has some popular 3D models used throughout industry and research by institutions like NVIDIA, Intel, Stanford, CMU, Meta and more.
-https://www.turbosquid.comLinks. 
-https://www.cgtrader.comLinks.
-https://sketchfab.com/3d-modelsLinks. 
+https://www.turbosquid.com. 
+https://www.cgtrader.com.
+https://sketchfab.com/3d-models. 
 to find free models online.
 ### Scenes
 A scene is in the JSON format. Sample scenes are stored in "./scenes". 1) Model definitions that define the 3d models (OBJs) and 2) a scene graph that places these models in the scene. Nodes that are either fully virtual or contain a model. Each node has at least a name, type and transformation.
